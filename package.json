@@ -1,0 +1,53 @@
+{
+    "name": "horst-syntax-highlighting",
+    "displayName": "HoRSt Syntax Highlighting",
+    "description": "Syntax Highlighting for Horst, a static analysis language",
+    "version": "0.0.1",
+    "license": "MIT",
+    "repository": {
+        "url": "https://github.com/Otto-AA/horst-syntax-highlighting"
+    },
+    "publisher": "oaie",
+    "engines": {
+        "vscode": "^1.67.0"
+    },
+    "categories": [
+        "Programming Languages",
+        "Snippets"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "horst",
+                "aliases": [
+                    "HoRSt",
+                    "horst"
+                ],
+                "extensions": [
+                    "horst"
+                ],
+                "firstLine": "^.*HoRSt.*",
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "horst",
+                "scopeName": "source.horst",
+                "path": "./syntaxes/horst.tmLanguage.json"
+            }
+        ],
+        "snippets": [
+            {
+                "language": "horst",
+                "path": "./snippets/horst.snippets.json"
+            }
+        ]
+    },
+    "scripts": {
+        "convert-yaml": "js-yaml syntaxes/horst.tmLanguage.yml > syntaxes/horst.tmLanguage.json"
+    },
+    "devDependencies": {
+        "js-yaml": "^4.1.0"
+    }
+}

@@ -1,0 +1,7 @@
+{
+  "Rule": {
+    "prefix": ["rule"],
+    "body": ["rule :=", "\tclause [$1]", "\t${2:true}", "\t=> $3;"],
+    "description": "A horst rule"
+  }
+}

@@ -1,0 +1,208 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "HoRSt",
+  "scopeName": "source.horst",
+  "patterns": [
+    {
+      "include": "#main"
+    },
+    {
+      "include": "#prototype"
+    }
+  ],
+  "repository": {
+    "prototype": {
+      "patterns": [
+        {
+          "include": "#comments"
+        },
+        {
+          "include": "#multiline_comments"
+        }
+      ]
+    },
+    "main": {
+      "patterns": [
+        {
+          "include": "#keywords"
+        },
+        {
+          "include": "#declarations"
+        },
+        {
+          "include": "#numbers"
+        },
+        {
+          "include": "#operators"
+        },
+        {
+          "include": "#freevars"
+        },
+        {
+          "include": "#parameters"
+        },
+        {
+          "include": "#constructorDefinitions"
+        },
+        {
+          "include": "#constants"
+        },
+        {
+          "include": "#basetypes"
+        },
+        {
+          "include": "#functionnames"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control",
+          "match": "\\b(clause|for|let|in|match|with)\\b"
+        }
+      ]
+    },
+    "declarations": {
+      "patterns": [
+        {
+          "name": "storage.modifier",
+          "match": "\\b(const|op|sel|type|eqtype|pred|rule)\\b"
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric",
+          "match": "\\b(-)?[0-9.]+\\b"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator",
+          "match": "\\b(select|store|\\+|\\-|\\*|\\|&&|\\|\\|)\\b"
+        }
+      ]
+    },
+    "comments": {
+      "patterns": [
+        {
+          "begin": "(^[ \\t]+)?(?=//)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.comment.example-c"
+            }
+          },
+          "end": "(?!\\G)",
+          "patterns": [
+            {
+              "begin": "//",
+              "beginCaptures": {
+                "0": {
+                  "name": "punctuation.definition.comment.example-c"
+                }
+              },
+              "end": "\\n",
+              "name": "comment.line.double-slash.example-c"
+            }
+          ]
+        }
+      ]
+    },
+    "multiline_comments": {
+      "patterns": [
+        {
+          "begin": "/\\*",
+          "captures": {
+            "0": {
+              "name": "punctuation.definition.comment.begin.example-c"
+            }
+          },
+          "end": "\\*/",
+          "name": "comment.multiline.example-c"
+        }
+      ]
+    },
+    "constructorDefinitions": {
+      "patterns": [
+        {
+          "name": "entity.name.type.example-c",
+          "match": "@[A-Z][a-zA-Z]*"
+        }
+      ]
+    },
+    "preDefinedConstants": {
+      "patterns": [
+        {
+          "name": "constant.language",
+          "match": "\\b(true|false)\\b"
+        }
+      ]
+    },
+    "constants": {
+      "patterns": [
+        {
+          "name": "variable.other.constant",
+          "match": "\\b[A-Z]+\\b"
+        }
+      ]
+    },
+    "basetypes": {
+      "patterns": [
+        {
+          "name": "storage.type",
+          "match": "\\b(int|bool)\\b"
+        },
+        {
+          "begin": "array<",
+          "end": ">",
+          "captures": {
+            "0": {
+              "name": "storage.type"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#main"
+            }
+          ]
+        }
+      ]
+    },
+    "functionname_used": {
+      "patterns": [
+        {
+          "name": "entity.name.function",
+          "match": "\\b[a-z]([A-Z]|[a-z])*[0-9]*\\b"
+        }
+      ]
+    },
+    "functionnames": {
+      "patterns": [
+        {
+          "name": "entity.name.function",
+          "match": "\\b[a-z]([A-Z]|[a-z])*[0-9]*\\b\\("
+        }
+      ]
+    },
+    "parameters": {
+      "patterns": [
+        {
+          "name": "variable.parameter",
+          "match": "![a-z]+[0-9]*"
+        }
+      ]
+    },
+    "freevars": {
+      "patterns": [
+        {
+          "name": "variable.other",
+          "match": "\\?[a-z]+[0-9]*"
+        }
+      ]
+    }
+  }
+}
